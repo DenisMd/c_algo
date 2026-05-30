@@ -1,5 +1,10 @@
 # 001_hello_world
 
+## 0. Базовая настройка git
+```bash
+git config --global user.email "..." && git config --global user.name "..."
+```
+
 ## 1. Компиляция
 
 ```bash
