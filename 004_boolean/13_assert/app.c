@@ -6,6 +6,7 @@ int my_abs(int a)
     return a < 0 ? -a : a;
 }
 
+// gcc -DNDEBUG
 int main()
 {
     int num;
