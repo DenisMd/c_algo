@@ -9,7 +9,7 @@ int main()
     int max_floor;
     int metro_m;
 
-    scanf("%d %d %d %d %d", &price, &rooms, &floor, &max_floor, &metro_m);
+    scanf("%d%d%d%d%d", &price, &rooms, &floor, &max_floor, &metro_m);
 
     // --- простые условия ---
     bool is_studio = rooms == 1;
