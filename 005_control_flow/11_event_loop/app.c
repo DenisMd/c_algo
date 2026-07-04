@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main(void)
 {
@@ -6,7 +7,8 @@ int main(void)
   int hero_damage = 25;
   int enemy_hp = 80;
   int enemy_damage = 15;
-  int choice; 
+  int choice;
+  bool is_end_game = false;
 
   printf("=== Simple battle (event loop) ===\n");
 
@@ -53,6 +55,7 @@ int main(void)
         break;
       case 0:
         printf("Exiting game\n");
+        is_end_game = true;
         break;
       default:
         printf("Unknown command\n");
@@ -64,6 +67,9 @@ int main(void)
       break;
     } else if (enemy_hp == 0) {
       printf("\nEnemy defeated. Victory!\n");
+      break;
+    } else if (is_end_game) {
+      printf("End game\n");
       break;
     }
   }
