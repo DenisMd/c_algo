@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main()
+{
+  int num;
+  if (scanf("%d", &num) != 1) {
+    fprintf(stderr, "invalid input");
+    return 1;
+  }
+
+  for (int i = 0; i < num; i += 5) {
+    printf("i=%d\n", i);
+  }
+
+  return 0;
+}
