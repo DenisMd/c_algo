@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <assert.h>
 #include "account.h"  // свой же заголовок: компилятор проверит, что
                       // реализация совпадает с объявлениями
 
@@ -11,6 +12,7 @@ double balance = 0.0;
 
 void deposit(double amount)
 {
+    assert(amount >= 0.0);
     balance += amount;
     printf("Пополнение: +%.2f\n", amount);
 }
