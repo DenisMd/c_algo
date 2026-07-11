@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdbool.h>
 #include <assert.h>
+#include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #ifndef VERBOSE
@@ -24,10 +24,10 @@ int years_to_double(double principal, double rate)
   return year;
 }
 
-bool read_input(double *principal, double *rate)
+bool read_input(double* principal, double* rate)
 {
   printf("Enter principal and annual rate (%%): ");
-  if (scanf("%lf%lf", principal, rate) != 2 || *principal <= 0) {
+  if (scanf("%lf%lf", principal, rate) != 2) {
     fprintf(stderr, "Incorrect input!\n");
     return false;
   }
@@ -42,10 +42,10 @@ bool read_input(double *principal, double *rate)
   return true;
 }
 
-void read_input_2(double *principal, double *rate)
+void read_input_2(double* principal, double* rate)
 {
   printf("Enter principal and annual rate (%%): ");
-  if (scanf("%lf%lf", principal, rate) != 2 || *principal <= 0) {
+  if (scanf("%lf%lf", principal, rate) != 2) {
     fprintf(stderr, "Incorrect input!\n");
     exit(1);
   }
@@ -61,7 +61,6 @@ void read_input_2(double *principal, double *rate)
 
 int main()
 {
-  const double inflation = 5.0;
   double principal, rate;
 
   if (!read_input(&principal, &rate)) {

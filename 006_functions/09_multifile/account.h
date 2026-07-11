@@ -1,6 +1,8 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
+#include <stdbool.h>
+
 // ---- Заголовочный файл (интерфейс модуля "счёт") ----
 // Здесь только ОБЪЯВЛЕНИЯ: что умеет модуль, но не как.
 // Этот файл подключают (#include) все, кто хочет работать со счётом.
@@ -10,7 +12,7 @@
 extern double balance;
 
 void deposit(double amount);   // положить деньги
-int  withdraw(double amount);  // снять; вернёт 1 - успех, 0 - не хватило
+bool  withdraw(double amount);  // снять; вернёт 1 - успех, 0 - не хватило
 void show_balance(void);       // показать баланс
 
 #endif

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void foo()
+void foo(int a)
 {
-  printf("Hello from foo()!\n");
+  printf("Hello from foo(%d)!\n", a);
 }

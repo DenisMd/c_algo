@@ -1,2 +1,2 @@
-
-void foo();
+#pragma once
+void foo(int);
