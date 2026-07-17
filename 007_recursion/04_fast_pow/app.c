@@ -17,7 +17,7 @@ long long fast_pow(int base, int exponent) {
     long long half = fast_pow(base, exponent/2);
     return half*half;
   }
-  return base * fast_pow(base, exponent-1);
+  return base * fast_pow(base, exponent-1); // a^5 = a * a^4
 }
 
 int main()
