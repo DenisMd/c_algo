@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# sudo apt install python3-matplotlib
+# sudo chmod +x plot.py
 """Рисует эволюцию центральной массы (лог из app) во времени.
 
     ./app < chain.txt | python3 plot.py            # GUI-окно (WSLg)

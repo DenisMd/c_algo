@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# sudo apt install python3-matplotlib
+# sudo chmod +x plot.py
 """Рисует гистограмму по корзинам — вывод app + исходные данные.
 
     ./app < data.txt | python3 plot.py data.txt            # GUI-окно (WSLg)

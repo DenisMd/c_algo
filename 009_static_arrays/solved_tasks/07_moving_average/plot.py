@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# sudo apt install python3-matplotlib
+# sudo chmod +x plot.py
 """Рисует цену, скользящее среднее и метки «золотого креста».
 
     ./app < aapl.txt | python3 plot.py aapl.txt            # GUI-окно (WSLg)
