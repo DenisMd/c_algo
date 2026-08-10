@@ -37,9 +37,8 @@ int main()
   int count = 0;
 
   while (n > 0) {
-    digits[count] = n % radix;
+    digits[count++] = n % radix;
     n = n / radix;
-    count++;
   }
 
   reverse_array(digits, count);

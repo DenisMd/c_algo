@@ -28,9 +28,8 @@ int main()
   int count = 0;
 
   while (n > 0) {
-    bits[count] = n % 2;
+    bits[count++] = n % 2;
     n = n / 2;
-    count++;
   }
 
   reverse_array(bits, count);
