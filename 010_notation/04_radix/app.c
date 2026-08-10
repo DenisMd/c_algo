@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 
 void reverse_array(int arr[], int size)
 {
@@ -32,7 +33,7 @@ int main()
     return 1;
   }
 
-  int digits[sizeof(int)];
+  int digits[sizeof(int)*CHAR_BIT];
   int count = 0;
 
   while (n > 0) {
