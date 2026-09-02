@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Ансамбль частиц: свободное падение с отскоком</title>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+<style>
+  html, body { margin: 0; background: #0f1115; color: #cfd4dc;
+               font-family: system-ui, sans-serif; }
+  #hint { position: fixed; left: 14px; bottom: 10px; font-size: 13px; color: #8a94a6; }
+</style>
+</head>
+<body>
+<div id="hint">пробел — перезапуск · клик — уронить частицу с высоты курсора · ↑/↓ — гравитация · ←/→ — упругость удара</div>
+<script>
+// ---- модель (та же, что в app.c): два параллельных массива x и v ----
+const N = 12;          // число частиц
+let x, v;              // высота и скорость — «структура массивов»
+let dt = 0.004;        // шаг по времени
+const SUBSTEPS = 4;    // шагов симуляции на кадр
+let g = -9.81;         // ускорение свободного падения
+let bounce = 0.8;      // доля скорости, остающаяся после удара о пол
+
+let trace = [];        // след выделенной частицы во времени
+let marked;            // её номер
+const MARGIN = 70;
+let gap, floorY, scaleY;
+
+function setup() {
+  createCanvas(940, 560);
+  marked = Math.floor(N / 2);
+  gap = (width - 2 * MARGIN) / (N - 1);
+  floorY = height * 0.62;
+  scaleY = 190;        // пикселей на единицу высоты
+  reset();
+}
+
+function reset() {                // стартовые высоты «лесенкой», из покоя
+  x = new Array(N);
+  v = new Array(N).fill(0);
+  for (let i = 0; i < N; i++) x[i] = 0.4 + 1.2 * (i / (N - 1));
+  trace = [];
+}
+
+function stepEuler() {            // ровно то, что делает step_euler в app.c
+  for (let i = 0; i < N; i++) {
+    v[i] += g * dt;               // сначала скорость
+    x[i] += v[i] * dt;            // и уже новой скоростью двигаем частицу
+
+    if (x[i] < 0) {
+      x[i] = -x[i];               // ушли под пол — отражаем
+      v[i] = -bounce * v[i];      // и разворачиваем скорость, часть её теряется
+    }
+  }
+  trace.push(x[marked]);
+  if (trace.length > width - 2 * MARGIN) trace.shift();
+}
+
+function draw() {
+  background(15, 17, 21);
+  for (let s = 0; s < SUBSTEPS; s++) stepEuler();
+
+  const px = i => MARGIN + i * gap;
+  const py = h => floorY - h * scaleY;
+
+  // пол
+  stroke(90, 98, 112); strokeWeight(3);
+  line(MARGIN - 40, floorY, width - MARGIN + 40, floorY);
+
+  // частицы: горизонталь — номер i, вертикаль — высота x[i]
+  noStroke();
+  for (let i = 0; i < N; i++) {
+    const falling = v[i] < 0;
+    if (i === marked) fill(214, 69, 69);
+    else fill(falling ? 79 : 110, falling ? 131 : 190, falling ? 204 : 160);
+    circle(px(i), py(x[i]), 18);
+
+    stroke(55, 60, 70); strokeWeight(1);          // «тень» на полу
+    line(px(i) - 7, floorY + 4, px(i) + 7, floorY + 4);
+    noStroke();
+  }
+
+  // след выделенной частицы: высота во времени
+  const ty = height * 0.93;
+  stroke(55, 60, 70); strokeWeight(1);
+  line(MARGIN, ty, width - MARGIN, ty);
+  stroke(214, 69, 69); strokeWeight(1.5); noFill();
+  beginShape();
+  for (let j = 0; j < trace.length; j++) vertex(MARGIN + j, ty - trace[j] * 70);
+  endShape();
+
+  // подписи
+  noStroke(); fill(207, 212, 220); textSize(14);
+  text("Явный Эйлер:  v += g·dt,  затем  x += v·dt;  под полом — x = -x, v = -k·v", MARGIN, 26);
+  fill(138, 148, 166); textSize(13);
+  text(`g = ${g.toFixed(2)}   k = ${bounce.toFixed(2)}   dt = ${dt}   частиц: ${N}`, MARGIN, 48);
+  fill(214, 69, 69);
+  text(`высота частицы №${marked} во времени`, MARGIN, ty - 12);
+
+  // энергия ансамбля — видно, как её съедают удары
+  let e = 0;
+  for (let i = 0; i < N; i++) e += 0.5 * v[i] * v[i] - g * x[i];
+  fill(138, 148, 166);
+  text(`энергия ансамбля: ${e.toFixed(2)}`, width - MARGIN - 170, 48);
+
+  if (e < 0.02) {
+    fill(207, 212, 220); textSize(15);
+    text("все успокоились — пробел, чтобы уронить заново", width / 2 - 170, floorY - 190);
+  }
+}
+
+function keyPressed() {
+  if (key === ' ') reset();
+  if (keyCode === UP_ARROW)    g = Math.max(g * 1.3, -60);
+  if (keyCode === DOWN_ARROW)  g = Math.min(g / 1.3, -0.5);
+  if (keyCode === RIGHT_ARROW) bounce = Math.min(bounce + 0.05, 1.0);  // 1.0 — удар без потерь
+  if (keyCode === LEFT_ARROW)  bounce = Math.max(bounce - 0.05, 0.0);  // 0 — прилипание к полу
+}
+
+function mousePressed() {         // уронить ближайшую частицу с высоты курсора
+  const i = Math.round((mouseX - MARGIN) / gap);
+  const h = (floorY - mouseY) / scaleY;
+  if (i >= 0 && i < N && h > 0) {
+    x[i] = h;
+    v[i] = 0;
+  }
+}
+</script>
+</body>
+</html>
