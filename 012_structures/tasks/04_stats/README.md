@@ -41,6 +41,7 @@ double stats_stddev(const struct stats* s);
 ## Расширение: дисперсия по алгоритму Уэлфорда
 
 ### Что считаем
+![alt text](image-1.png)
 
 Среднее и отклонение числа от него:
 
