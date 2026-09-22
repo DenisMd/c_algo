@@ -3,6 +3,7 @@
 #include <string.h>
 
 // посмотреть сам файл: xxd raw.bin
+// https://cppreference.com/c/io
 
 const int FILL_BYTE = 0xAA;
 const size_t BYTES_PER_ROW = 8;
