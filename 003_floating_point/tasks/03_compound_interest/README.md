@@ -49,28 +49,29 @@ Effective rate  - <значение>
 | `tiny_rate.txt` | 1e6 | 1e-9 | 1e9 | Крошечная ставка, огромный срок — точность `pow` |
 | `micro.txt` | 1e6 | 0.08 | 1e-6 | Срок меньше года — \((1+r)^n \approx 1 + rn\) |
 
-Пример запуска:
+### Примеры
+
+Готовые файлы ввода лежат рядом с заданием: `./a.out < deposit.txt`.
+
+**[deposit.txt](deposit.txt)**
 
 ```
-gcc app.c -o a.out -lm
-./a.out < deposit.txt
+100000 0.08 10
 ```
 
-Все тесты разом (из папки задания, после сборки):
-
 ```
-../../../utils/scripts/run_all.sh
-```
-
-Ожидаемый вывод для `deposit.txt` (математически; последние цифры в `double` могут чуть отличаться):
-
-```
-Compound amount - 215892.500000
+Compound amount - 215892.499727
 Simple amount   - 180000.000000
 Effective rate  - 0.083000
 ```
 
-Для `hyper.txt` сложная сумма должна стать бесконечностью:
+---
+
+**[hyper.txt](hyper.txt)**
+
+```
+1000 2.0 700
+```
 
 ```
 Compound amount - inf
@@ -80,7 +81,47 @@ Effective rate  - 5.358600
 
 (`Effective rate` при \(r = 2.0\) тоже огромна — посмотрите, что получится.)
 
+---
 
+**[micro.txt](micro.txt)**
+
+```
+1000000 0.08 1e-6
+```
+
+```
+Compound amount - 1000000.076961
+Simple amount   - 1000000.080000
+Effective rate  - 0.083000
+```
+
+---
+
+**[penny.txt](penny.txt)**
+
+```
+0.01 0.05 200
+```
+
+```
+Compound amount - 172.925808
+Simple amount   - 0.110000
+Effective rate  - 0.051162
+```
+
+---
+
+**[tiny_rate.txt](tiny_rate.txt)**
+
+```
+1000000 1e-9 1e9
+```
+
+```
+Compound amount - 2718282.052012
+Simple amount   - 2000000.000000
+Effective rate  - 0.000000
+```
 
 | Явление | Где проявится |
 |---------|----------------|

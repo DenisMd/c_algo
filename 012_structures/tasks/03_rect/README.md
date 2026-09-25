@@ -165,6 +165,10 @@ X3 Y3 X4 Y4
 
 ## Примеры
 
+Готовые файлы ввода лежат рядом с заданием: `./a.out < basic.txt`.
+
+**[basic.txt](basic.txt)**
+
 ```
 0 0 4 3
 2 1 6 5
@@ -181,7 +185,7 @@ b contains a: no
 
 ---
 
-Прямоугольники стоят вплотную, общая часть — отрезок, поэтому пересечение пустое:
+**[touch.txt](touch.txt)** — прямоугольники стоят вплотную, общая часть — отрезок, поэтому пересечение пустое:
 
 ```
 0 0 2 2
@@ -193,6 +197,132 @@ a = (0.00, 0.00)-(2.00, 2.00), area = 4.00
 b = (2.00, 0.00)-(4.00, 2.00), area = 4.00
 intersect = empty, area = 0.00
 union = (0.00, 0.00)-(4.00, 2.00), area = 8.00
+a contains b: no
+b contains a: no
+```
+
+---
+
+**[border_touch.txt](border_touch.txt)**
+
+```
+0 0 4 4
+0 0 2 2
+```
+
+```
+a = (0.00, 0.00)-(4.00, 4.00), area = 16.00
+b = (0.00, 0.00)-(2.00, 2.00), area = 4.00
+intersect = (0.00, 0.00)-(2.00, 2.00), area = 4.00
+union = (0.00, 0.00)-(4.00, 4.00), area = 16.00
+a contains b: yes
+b contains a: no
+```
+
+---
+
+**[degenerate.txt](degenerate.txt)**
+
+```
+1 1 1 5
+0 0 4 4
+```
+
+```
+a = empty, area = 0.00
+b = (0.00, 0.00)-(4.00, 4.00), area = 16.00
+intersect = empty, area = 0.00
+union = (0.00, 0.00)-(4.00, 4.00), area = 16.00
+a contains b: no
+b contains a: no
+```
+
+---
+
+**[disjoint.txt](disjoint.txt)**
+
+```
+0 0 2 2
+5 5 7 7
+```
+
+```
+a = (0.00, 0.00)-(2.00, 2.00), area = 4.00
+b = (5.00, 5.00)-(7.00, 7.00), area = 4.00
+intersect = empty, area = 0.00
+union = (0.00, 0.00)-(7.00, 7.00), area = 49.00
+a contains b: no
+b contains a: no
+```
+
+---
+
+**[negatives.txt](negatives.txt)**
+
+```
+-4 -3 0 0
+-2 -5 2 -1
+```
+
+```
+a = (-4.00, -3.00)-(0.00, 0.00), area = 12.00
+b = (-2.00, -5.00)-(2.00, -1.00), area = 16.00
+intersect = (-2.00, -3.00)-(0.00, -1.00), area = 4.00
+union = (-4.00, -5.00)-(2.00, 0.00), area = 30.00
+a contains b: no
+b contains a: no
+```
+
+---
+
+**[nested.txt](nested.txt)**
+
+```
+0 0 10 10
+2 2 5 5
+```
+
+```
+a = (0.00, 0.00)-(10.00, 10.00), area = 100.00
+b = (2.00, 2.00)-(5.00, 5.00), area = 9.00
+intersect = (2.00, 2.00)-(5.00, 5.00), area = 9.00
+union = (0.00, 0.00)-(10.00, 10.00), area = 100.00
+a contains b: yes
+b contains a: no
+```
+
+---
+
+**[same.txt](same.txt)**
+
+```
+1 1 5 4
+1 1 5 4
+```
+
+```
+a = (1.00, 1.00)-(5.00, 4.00), area = 12.00
+b = (1.00, 1.00)-(5.00, 4.00), area = 12.00
+intersect = (1.00, 1.00)-(5.00, 4.00), area = 12.00
+union = (1.00, 1.00)-(5.00, 4.00), area = 12.00
+a contains b: yes
+b contains a: yes
+```
+
+---
+
+**[unordered.txt](unordered.txt)**
+
+```
+4 3 0 0
+6 5 2 1
+```
+
+```
+a = (0.00, 0.00)-(4.00, 3.00), area = 12.00
+b = (2.00, 1.00)-(6.00, 5.00), area = 16.00
+intersect = (2.00, 1.00)-(4.00, 3.00), area = 4.00
+union = (0.00, 0.00)-(6.00, 5.00), area = 30.00
 a contains b: no
 b contains a: no
 ```

@@ -28,6 +28,10 @@ base exp
 
 ### Примеры
 
+Готовые файлы ввода лежат рядом с заданием: `./a.out < positive.txt`.
+
+**[positive.txt](positive.txt)**
+
 ```
 2 10
 ```
@@ -37,6 +41,8 @@ base exp
 ```
 
 ---
+
+**[negative_exp.txt](negative_exp.txt)**
 
 ```
 2 -3
@@ -48,10 +54,36 @@ base exp
 
 ---
 
+**[zero_exp.txt](zero_exp.txt)**
+
 ```
 5 0
 ```
 
 ```
 1.000000
+```
+
+---
+
+**[fraction.txt](fraction.txt)**
+
+```
+10 -2
+```
+
+```
+0.010000
+```
+
+---
+
+**[negative_base.txt](negative_base.txt)**
+
+```
+-2 3
+```
+
+```
+-8.000000
 ```

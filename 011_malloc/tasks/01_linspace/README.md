@@ -42,6 +42,10 @@ start stop n
 
 ### Примеры
 
+Готовые файлы ввода лежат рядом с заданием: `./a.out < basic.txt`.
+
+**[basic.txt](basic.txt)**
+
 ```
 0 1 5
 ```
@@ -51,6 +55,8 @@ start stop n
 ```
 
 ---
+
+**[reversed.txt](reversed.txt)**
 
 ```
 10 0 6
@@ -62,6 +68,8 @@ start stop n
 
 ---
 
+**[single.txt](single.txt)**
+
 ```
 3 7 1
 ```
@@ -69,3 +77,65 @@ start stop n
 ```
 3
 ```
+
+---
+
+**[fractional.txt](fractional.txt)**
+
+```
+0.1 0.5 9
+```
+
+```
+0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
+```
+
+---
+
+**[huge.txt](huge.txt)**
+
+```
+0 1 100000000000
+```
+
+(пустой вывод)
+
+В stderr:
+
+```
+Allocation failed!
+```
+
+---
+
+**[negatives.txt](negatives.txt)**
+
+```
+-1 1 5
+```
+
+```
+-1 -0.5 0 0.5 1
+```
+
+---
+
+**[two.txt](two.txt)**
+
+```
+0 1 2
+```
+
+```
+0 1
+```
+
+---
+
+**[zero.txt](zero.txt)**
+
+```
+0 1 0
+```
+
+(пустой вывод)

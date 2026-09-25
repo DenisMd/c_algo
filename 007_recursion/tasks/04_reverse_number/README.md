@@ -34,6 +34,10 @@ N
 
 ### Примеры
 
+Готовые файлы ввода лежат рядом с заданием: `./a.out < basic.txt`.
+
+**[basic.txt](basic.txt)**
+
 ```
 1234
 ```
@@ -43,6 +47,8 @@ N
 ```
 
 ---
+
+**[trailing_zero.txt](trailing_zero.txt)**
 
 ```
 5071
@@ -54,10 +60,24 @@ N
 
 ---
 
+**[single.txt](single.txt)**
+
 ```
 7
 ```
 
 ```
 7
+```
+
+---
+
+**[hundred.txt](hundred.txt)**
+
+```
+100
+```
+
+```
+1
 ```

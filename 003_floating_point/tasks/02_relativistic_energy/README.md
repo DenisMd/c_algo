@@ -20,33 +20,69 @@ $$1 эВ = 1,602176634⋅10^{−19} Дж$$
 ### Задача
 С стандартного ввода приходит масса в киллограмах и скорость в метрах в секнуду. Рассчитать релятивисткую энергию и распечатать ее в электронвольтах.
 
-Есть несколько тестов. После сборки прогнать все `.txt` в текущей папке:
+### Примеры
+
+Готовые файлы ввода лежат рядом с заданием: `./a.out < proton999.txt`.
+
+**[proton999.txt](proton999.txt)**
 
 ```
-gcc app.c -o a.out -lm
-../../../utils/scripts/run_all.sh
+1.67e-27 299500200
 ```
 
-Пример вывода:
-
 ```
-=== ./proton999.txt ===
 Rel energy - 3.357170e-09 J
 Rel energy - 2.095546e+10 eV
+```
 
-=== ./proton9999.txt ===
+---
+
+**[proton9999.txt](proton9999.txt)**
+
+```
+1.67e-27 299770020
+```
+
+```
 Rel energy - 1.061391e-08 J
 Rel energy - 6.625205e+10 eV
+```
 
-=== ./proton999999.txt ===
+---
+
+**[proton999999.txt](proton999999.txt)**
+
+```
+1.67e-27 299799700
+```
+
+```
 Rel energy - 1.061011e-07 J
 Rel energy - 6.622833e+11 eV
+```
 
-=== ./proton_light.txt ===
+---
+
+**[proton_light.txt](proton_light.txt)**
+
+```
+1.67e-27 2.998e8
+```
+
+```
 Rel energy - inf J
 Rel energy - inf eV
+```
 
-=== ./proton_rest.txt ===
+---
+
+**[proton_rest.txt](proton_rest.txt)**
+
+```
+1.67e-27 0
+```
+
+```
 Rel energy - 1.500997e-10 J
 Rel energy - 9.369221e+08 eV
 ```

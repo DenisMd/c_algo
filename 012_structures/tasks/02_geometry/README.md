@@ -233,6 +233,10 @@ PX PY
 
 ## Примеры
 
+Готовые файлы ввода лежат рядом с заданием: `./a.out < basic.txt`.
+
+**[basic.txt](basic.txt)**
+
 ```
 0 0 4 3
 0 3 4 0
@@ -249,6 +253,8 @@ intersection: (2.0000, 1.5000)
 
 ---
 
+**[parallel.txt](parallel.txt)**
+
 ```
 0 0 4 0
 0 2 4 2
@@ -261,4 +267,130 @@ unit v1 = (1.0000, 0.0000), |unit| = 1.0000
 dot(v1, v2) = 16.0000
 distance from point to s1 = 2.0000
 intersection: none
+```
+
+---
+
+**[collinear.txt](collinear.txt)**
+
+```
+0 0 4 0
+2 0 6 0
+2 1
+```
+
+```
+v1 = (4.0000, 0.0000), |v1| = 4.0000
+unit v1 = (1.0000, 0.0000), |unit| = 1.0000
+dot(v1, v2) = 16.0000
+distance from point to s1 = 1.0000
+intersection: none
+```
+
+---
+
+**[degenerate.txt](degenerate.txt)**
+
+```
+1 1 1 1
+0 0 2 2
+4 5
+```
+
+```
+v1 = (0.0000, 0.0000), |v1| = 0.0000
+unit v1 = (0.0000, 0.0000), |unit| = 0.0000
+dot(v1, v2) = 0.0000
+distance from point to s1 = 5.0000
+intersection: none
+```
+
+---
+
+**[negatives.txt](negatives.txt)**
+
+```
+-3 -4 0 0
+-3 0 0 -4
+-3 0
+```
+
+```
+v1 = (3.0000, 4.0000), |v1| = 5.0000
+unit v1 = (0.6000, 0.8000), |unit| = 1.0000
+dot(v1, v2) = -7.0000
+distance from point to s1 = 2.4000
+intersection: (-1.5000, -2.0000)
+```
+
+---
+
+**[no_cross.txt](no_cross.txt)**
+
+```
+0 0 1 0
+3 -1 3 1
+0 1
+```
+
+```
+v1 = (1.0000, 0.0000), |v1| = 1.0000
+unit v1 = (1.0000, 0.0000), |unit| = 1.0000
+dot(v1, v2) = 0.0000
+distance from point to s1 = 1.0000
+intersection: none
+```
+
+---
+
+**[perpendicular.txt](perpendicular.txt)**
+
+```
+0 0 0 4
+-2 2 2 2
+3 0
+```
+
+```
+v1 = (0.0000, 4.0000), |v1| = 4.0000
+unit v1 = (0.0000, 1.0000), |unit| = 1.0000
+dot(v1, v2) = 0.0000
+distance from point to s1 = 3.0000
+intersection: (0.0000, 2.0000)
+```
+
+---
+
+**[point_on_segment.txt](point_on_segment.txt)**
+
+```
+0 0 6 8
+6 0 0 8
+3 4
+```
+
+```
+v1 = (6.0000, 8.0000), |v1| = 10.0000
+unit v1 = (0.6000, 0.8000), |unit| = 1.0000
+dot(v1, v2) = 28.0000
+distance from point to s1 = 0.0000
+intersection: (3.0000, 4.0000)
+```
+
+---
+
+**[touch.txt](touch.txt)**
+
+```
+0 0 2 2
+2 2 4 0
+2 0
+```
+
+```
+v1 = (2.0000, 2.0000), |v1| = 2.8284
+unit v1 = (0.7071, 0.7071), |unit| = 1.0000
+dot(v1, v2) = 0.0000
+distance from point to s1 = 1.4142
+intersection: (2.0000, 2.0000)
 ```
